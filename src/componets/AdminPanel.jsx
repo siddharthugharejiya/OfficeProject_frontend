@@ -260,13 +260,13 @@ const AdminPanel = () => {
                                             </div>
                                             <p className="text-sm text-white line-clamp-2">{el.des}</p>
                                             <div className="flex justify-between items-center mt-2">
-                                                <span className="text-white font-bold">
+                                                {/* <span className="text-white font-bold">
                                                     ${el.price}
                                                     {el.strike && (
                                                         <span className="text-sm text-gray-400 ms-2 line-through">${el.strike}</span>
                                                     )}
-                                                </span>
-                                                <span className="text-sm text-white">{el.weight}</span>
+                                                </span> */}
+                                                {/* <span className="text-sm text-white">{el.weight}</span> */}
                                             </div>
                                         </div>
 

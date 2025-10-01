@@ -252,6 +252,7 @@ const Product_add = () => {
                             <option value="Urinal">Urinal</option>
                             <option value="Pan">Pan</option>
                             <option value="Pastel Series">Pastel Series</option>
+                            <option value="Coming Soon">Coming Soon</option>
                         </select>
                     </div>
                 </div>

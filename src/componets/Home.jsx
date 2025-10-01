@@ -580,7 +580,7 @@ function Home() {
             {/* Stay in the loop */}
 
             <div className='mb-4 py-10'>
-                <div className='pt-4 px-4' data-aos="fade-up">
+                <div className='pt-4 px-4 pb-4' data-aos="fade-up">
                     <div className="flex items-center justify-center space-x-2 font-semibold text-[#BD9C85] text-sm uppercase pb-2">
                         <span>04</span>
                         <span className="h-[1px] w-[20px] bg-[#BD9C85]"></span>
@@ -600,7 +600,7 @@ function Home() {
 
                             <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[247px] w-full object-cover' alt="" />
+                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
                                     <div className="title flex flex-wrap items-center text-xs sm:text-sm">
@@ -618,45 +618,53 @@ function Home() {
                                 </div>
                             </div>
 
-                            <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="100">
+                            <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[247px] w-full object-cover' alt="" />
+                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
-                                    <div className="title flex flex-wrap items-center text-sm">
+                                    <div className="title flex flex-wrap items-center text-xs sm:text-sm">
                                         <span className='text-[#999999]'>Sohoconcept.com</span>
-                                        <div className='h-[5px] w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
+                                        <div className='h-[4px] w-[4px] sm:h-[5px] sm:w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
                                         <span>Living Room</span>
-                                        <div className='h-[5px] w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
+                                        <div className='h-[4px] w-[4px] sm:h-[5px] sm:w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
                                         <div className='text-[#999999]'><i className="fa-solid fa-comments"></i> Comment: 0</div>
                                     </div>
-                                    <p className='text-xl font-semibold py-3'>Grandmillenial Style & Modern Furniture</p>
-                                    <p className='text-[#444343]'>Grandmilenial style could be one of the reasons that velvet is making such a comeback. This new popular trend is a bold one, mixing woods and modern..</p>
-                                    <button className="bg-[#BF624C] xs:p-1.5 sm:p-3 p-2 xs:text-[10px] sm:text-[14px] text-[12px] text-white font-bold rounded-sm xs:mt-1 sm:mt-2 mt-2">
+                                    <p className='text-lg sm:text-xl font-semibold py-2 sm:py-3'>Grandmillenial Style & Modern Furniture</p>
+                                    <p className='text-[#444343] text-sm sm:text-base'>Grandmilenial style could be one of the reasons that velvet is making such a comeback. This new popular trend is a bold one, mixing woods and modern..</p>
+                                    <button className="bg-[#BF624C] px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-white font-bold rounded-sm mt-2 sm:mt-3">
                                         Read more <i className="fa-solid fa-arrow-right"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="200">
+
+
+
+
+
+                            <div className='card h-auto w-full' data-aos="fade-up" data-aos-delay="0">
                                 <div>
-                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[247px] w-full object-cover' alt="" />
+                                    <img src="https://demo74.leotheme.com/prestashop/leo_shopiodecor_demo/img/leoblog/b/1/23/576_350/b-b-blog-7.jpg" className='h-[200px] sm:h-[250px] w-full object-cover' alt="" />
                                 </div>
                                 <div className='card-body p-4'>
-                                    <div className="title flex flex-wrap items-center text-sm">
+                                    <div className="title flex flex-wrap items-center text-xs sm:text-sm">
                                         <span className='text-[#999999]'>Sohoconcept.com</span>
-                                        <div className='h-[5px] w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
+                                        <div className='h-[4px] w-[4px] sm:h-[5px] sm:w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
                                         <span>Living Room</span>
-                                        <div className='h-[5px] w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
+                                        <div className='h-[4px] w-[4px] sm:h-[5px] sm:w-[5px] rounded-full bg-[#CB8161] mx-2'></div>
                                         <div className='text-[#999999]'><i className="fa-solid fa-comments"></i> Comment: 0</div>
                                     </div>
-                                    <p className='text-xl font-semibold py-3'>Grandmillenial Style & Modern Furniture</p>
-                                    <p className='text-[#444343]'>Grandmilenial style could be one of the reasons that velvet is making such a comeback. This new popular trend is a bold one, mixing woods and modern..</p>
-                                    <button className="bg-[#BF624C] xs:p-1.5 sm:p-3 p-2 xs:text-[10px] sm:text-[14px] text-[12px] text-white font-bold rounded-sm xs:mt-1 sm:mt-2 mt-2">
+                                    <p className='text-lg sm:text-xl font-semibold py-2 sm:py-3'>Grandmillenial Style & Modern Furniture</p>
+                                    <p className='text-[#444343] text-sm sm:text-base'>Grandmilenial style could be one of the reasons that velvet is making such a comeback. This new popular trend is a bold one, mixing woods and modern..</p>
+                                    <button className="bg-[#BF624C] px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-white font-bold rounded-sm mt-2 sm:mt-3">
                                         Read more <i className="fa-solid fa-arrow-right"></i>
                                     </button>
                                 </div>
                             </div>
+
+
+
                         </>
                     )}
                 </div>

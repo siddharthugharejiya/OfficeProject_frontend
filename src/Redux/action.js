@@ -24,7 +24,7 @@ const showToast = (message, type = "success") => {
 // FETCH PRODUCTS
 export const Product_Get = () => async (dispatch) => {
     try {
-        dispatch({ type: "Product_Get_Loading" });
+        // dispatch({ type: "Product_Get_Loading" });
         const response = await fetch("https://officeproject-backend.onrender.com/get");
         const res = await response.json();
         dispatch({ type: "Product_Get", payload: res.data });
