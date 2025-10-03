@@ -2,28 +2,27 @@
 import AnimatedImageSlider from './Imageslide'
 import Footer from './Footer'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Product_del, Product_Get } from '../Redux/action'
 import { useNavigate } from 'react-router-dom'
-import Slider from "react-slick";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { FaShoppingCart, FaEye, FaHeart, FaShareAlt } from "react-icons/fa";
+// import { FaShoppingCart, FaEye, FaHeart, FaShareAlt } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../App.css"
-import { ProductCardSkeleton, FeaturedProductSkeleton, BlogCardSkeleton, LoadingSpinner } from './SkeletonLoader'
-
-
+import { FeaturedProductSkeleton, BlogCardSkeleton, LoadingSpinner } from './SkeletonLoader'
+import { Autoplay } from 'swiper/modules';
+import { CategorySlider } from './CategorySlider'
+// import CategorySlider from './CategorySlider'
 function Home() {
     const dispatch = useDispatch()
     const nav = useNavigate()
 
 
     const handleclick = (e) => {
-        console.log(e);
         nav(`/Product/${e}`)
 
     }
@@ -31,7 +30,12 @@ function Home() {
     useEffect(() => {
         dispatch(Product_Get())
     }, [dispatch])
-    const Product = useSelector(state => state.Product.Product || [])
+    // Redux से Product, loading, error ले रहे हैं
+    const productState = useSelector((state) => state.Product);
+    const { Product, loading, error } = productState;
+    console.log(Product);
+
+
 
     // Zoom effect for slider images
     useLayoutEffect(() => {
@@ -73,6 +77,7 @@ function Home() {
             });
         };
     }, [Product]);
+
 
     const [open, setOpen] = useState(false);
     const [eye, setEye] = useState(null);
@@ -143,31 +148,7 @@ function Home() {
 
 
     const isLoading = useSelector(state => state.Product.loading || false)
-    // console.log("Product:", Product);
-    const settings111 = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1280,
-                settings: { slidesToShow: 3 }
-            },
-            {
-                breakpoint: 1024,
-                settings: { slidesToShow: 2 }
-            },
-            {
-                breakpoint: 640,
-                settings: { slidesToShow: 1 }
-            }
-        ]
-    };
+
 
 
     const firstProductsByCategory = Object.values(
@@ -178,7 +159,28 @@ function Home() {
             return acc;
         }, {})
     );
-    console.log(firstProductsByCategory);
+    // console.log(firstProductsByCategory);
+    const swiperRef = useRef(null);
+    useEffect(() => {
+        if (swiperRef.current && Product.length > 0) {
+            swiperRef.current.autoplay.start();
+        }
+    }, [Product]);
+    const skeletonSlides = Array(4)
+        .fill(0)
+        .map((_, index) => (
+            <SwiperSlide key={index}>
+                <div className="flex justify-center items-stretch h-full">
+                    <div className="card w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[20rem] flex flex-col items-center cursor-pointer overflow-hidden m-1">
+                        <div className="h-[350px] w-full bg-gray-300 animate-pulse rounded-md"></div>
+                        <div className="card-body mt-4 p-2 w-full">
+                            <div className="h-4 bg-gray-300 animate-pulse rounded w-3/4 mx-auto mb-2"></div>
+                            <div className="h-4 bg-gray-300 animate-pulse rounded w-1/2 mx-auto"></div>
+                        </div>
+                    </div>
+                </div>
+            </SwiperSlide>
+        ));
 
 
     return (
@@ -247,8 +249,18 @@ function Home() {
                 </div>
                 {/* product */}
                 <div className="w-full flex justify-center px-2 sm:px-4 py-6">
-                    <div className="w-full max-w-7xl mx-auto ">
+                    <div className="w-full max-w-7xl mx-auto my-5">
                         <Swiper
+                            onSwiper={(swiper) => (swiperRef.current = swiper)}
+                            modules={[Autoplay]}
+                            autoplay={{
+                                delay: 2000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: false,
+                                stopOnLastSlide: false,
+                                waitForTransition: false,
+                            }}
+                            loop={true}
                             spaceBetween={20}
                             slidesPerView={4}
                             breakpoints={{
@@ -260,41 +272,42 @@ function Home() {
                                 480: { slidesPerView: 1 },
                                 300: { slidesPerView: 1 },
                             }}
-                            loop={true}
                         >
-                            {Product.map((item, index) => (
-                                <SwiperSlide key={item.id}>
-                                    <div key={index} className="flex justify-center items-stretch h-full">
-                                        <div className="card w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[20rem]  flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0" onClick={() => handleclick(item._id)} >
+                            {loading
+                                ? skeletonSlides
+                                : Product.map((item) => (
+                                    <SwiperSlide key={item._id}>
+                                        <div className="flex justify-center items-stretch h-full">
                                             <div
-                                                className="h-[350px] relative overflow-hidden w-full group"
-
+                                                className="card w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0"
+                                                onClick={() => handleclick(item._id)}
                                             >
-                                                <img src={item.Image[0]} alt="" className="h-full w-full object-cover " />
-                                            </div>
-                                            <div className="card-body mt-4 p-2" >
-                                                <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F]">{item.name}</h2>
-                                                <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F] ">{item.category}</p>
+                                                <div className="h-[350px] relative overflow-hidden w-full group">
+                                                    <img
+                                                        src={item.Image[0]}
+                                                        alt={item.name}
+                                                        className="h-full w-full object-cover"
+                                                    />
+                                                </div>
+                                                <div className="card-body mt-4 p-2">
+                                                    <h2 className="card-title text-lg font-mono uppercase text-[14px] text-center text-[#CE701F]">
+                                                        {item.name}
+                                                    </h2>
+                                                    <p className="card-title text-gray-500 text-lg font-mono uppercase text-[14px] text-center hover:text-[#CE701F]">
+                                                        {item.category}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-
-                                </SwiperSlide>
-                            ))}
-
+                                    </SwiperSlide>
+                                ))}
                         </Swiper>
-
-
-
-
-
                     </div>
                 </div>
             </div>
 
             <div className='sm:py-10 py-1'>
-                <div className='pt-4 px-4' data-aos="fade-up">
+                <div className='pt-4 px-4 pb-3' data-aos="fade-up">
                     <div className="flex items-center justify-center space-x-2 font-semibold text-[#BD9C85] text-sm uppercase pb-2">
                         <span>02</span>
                         <span className="h-[1px] w-[20px] bg-[#BD9C85]"></span>
@@ -302,170 +315,12 @@ function Home() {
                     </div>
                     <p className='text-center text-2xl sm:text-3xl md:text-4xl uppercase font-bold'>Top Picks for You</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-10">
-                    {isLoading ? (
-                        <>
-                            {[1, 2, 3, 4].map((index) => (
-                                <FeaturedProductSkeleton key={index} />
-                            ))}
-                        </>
-                    ) : (
-                        <>
-                            <div
-                                className="hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                                data-aos="fade-up"
-                                data-aos-delay="0"
-                            >
-                                {/* Image Section */}
-                                <div className="relative overflow-hidden cursor-zoom-in">
-                                    <img
-                                        src="https://demo74leotheme.b-cdn.net/prestashop/leo_shopiodecor_demo/207-home_default_square/mountain-fox-cushion.jpg"
-                                        className="h-[400px] w-full object-cover"
-                                        alt="product"
-                                    />
+                <div className="md:px-30 px-0   ">
 
-                                    {/* Sale Badge */}
-                                    <div className="absolute top-2 left-2 bg-[#B0D3FF] text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                        Sale
-                                    </div>
-                                </div>
-
-                                {/* Content Section */}
-                                <div className="p-3 text-center">
-                                    <div className="mb-1">
-                                        <span className="text-xs text-gray-600 uppercase tracking-wide">Furniture</span>
-                                    </div>
-
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                                        Ruud-Jan Kokke Slat Chair
-                                    </h3>
-
-                                    <p className="text-gray-600 text-sm">
-                                        The Netherlands, 1986 - Premium quality furniture with timeless design.
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div
-                                className="hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                                data-aos="fade-up"
-                                data-aos-delay="0"
-                            >
-                                {/* Image Section */}
-                                <div className="relative overflow-hidden cursor-zoom-in">
-                                    <img
-                                        src="https://demo74leotheme.b-cdn.net/prestashop/leo_shopiodecor_demo/207-home_default_square/mountain-fox-cushion.jpg"
-                                        className="h-[400px] w-full object-cover"
-                                        alt="product"
-                                    />
-
-                                    {/* Sale Badge */}
-                                    <div className="absolute top-2 left-2 bg-[#B0D3FF] text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                        Sale
-                                    </div>
-                                </div>
-
-                                {/* Content Section */}
-                                <div className="p-3 text-center">
-                                    <div className="mb-1">
-                                        <span className="text-xs text-gray-600 uppercase tracking-wide">Furniture</span>
-                                    </div>
-
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                                        Ruud-Jan Kokke Slat Chair
-                                    </h3>
-
-                                    <p className="text-gray-600 text-sm">
-                                        The Netherlands, 1986 - Premium quality furniture with timeless design.
-                                    </p>
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div
-                                className="hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                                data-aos="fade-up"
-                                data-aos-delay="0"
-                            >
-                                {/* Image Section */}
-                                <div className="relative overflow-hidden cursor-zoom-in">
-                                    <img
-                                        src="https://demo74leotheme.b-cdn.net/prestashop/leo_shopiodecor_demo/207-home_default_square/mountain-fox-cushion.jpg"
-                                        className="h-[400px] w-full object-cover"
-                                        alt="product"
-                                    />
-
-                                    {/* Sale Badge */}
-                                    <div className="absolute top-2 left-2 bg-[#B0D3FF] text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                        Sale
-                                    </div>
-                                </div>
-
-                                {/* Content Section */}
-                                <div className="p-3 text-center">
-                                    <div className="mb-1">
-                                        <span className="text-xs text-gray-600 uppercase tracking-wide">Furniture</span>
-                                    </div>
-
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                                        Ruud-Jan Kokke Slat Chair
-                                    </h3>
-
-                                    <p className="text-gray-600 text-sm">
-                                        The Netherlands, 1986 - Premium quality furniture with timeless design.
-                                    </p>
-                                </div>
-                            </div>
-
-
-
-
-
-
-                            <div
-                                className="hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-                                data-aos="fade-up"
-                                data-aos-delay="0"
-                            >
-                                {/* Image Section */}
-                                <div className="relative overflow-hidden cursor-zoom-in">
-                                    <img
-                                        src="https://demo74leotheme.b-cdn.net/prestashop/leo_shopiodecor_demo/207-home_default_square/mountain-fox-cushion.jpg"
-                                        className="h-[400px] w-full object-cover"
-                                        alt="product"
-                                    />
-
-                                    {/* Sale Badge */}
-                                    <div className="absolute top-2 left-2 bg-[#B0D3FF] text-white text-xs font-semibold px-2 py-0.5 rounded">
-                                        Sale
-                                    </div>
-                                </div>
-
-                                {/* Content Section */}
-                                <div className="p-3 text-center">
-                                    <div className="mb-1">
-                                        <span className="text-xs text-gray-600 uppercase tracking-wide">Furniture</span>
-                                    </div>
-
-                                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                                        Ruud-Jan Kokke Slat Chair
-                                    </h3>
-
-                                    <p className="text-gray-600 text-sm">
-                                        The Netherlands, 1986 - Premium quality furniture with timeless design.
-                                    </p>
-                                </div>
-                            </div>
-
-
-
-                        </>
-                    )}
+                    <CategorySlider />
                 </div>
+
+
 
             </div>
 

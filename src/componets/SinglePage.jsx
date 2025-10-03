@@ -153,19 +153,28 @@ function SinglePage() {
             {/* Share Icons */}
             <div className='mt-8 flex items-center gap-3 text-gray-600'>
               <span className='text-sm font-medium'>Share:</span>
-              <a href="#" className="hover:text-blue-600">
+
+              {/* Facebook */}
+              <a href="https://www.facebook.com/profile.php?id=61578722161740" className="hover:text-blue-600">
                 <i className="fa-brands fa-facebook text-lg"></i>
               </a>
-              <a href="#" className="hover:text-sky-500">
-                <i className="fa-brands fa-twitter text-lg"></i>
+
+              {/* LinkedIn */}
+              <a href="https://www.linkedin.com/in/prettyware-ceramika-33b973377" className="hover:text-sky-500">
+                <i className="fa-brands fa-linkedin-in"></i>
               </a>
-              <a href="#" className="hover:text-red-600">
+
+              {/* Pinterest */}
+              <a href="https://pin.it/4GIGzi4YU" className="hover:text-red-600">
                 <i className="fa-brands fa-pinterest text-lg"></i>
               </a>
-              <a href="#" className="hover:text-pink-500">
+
+              {/* Instagram */}
+              <a href="https://www.instagram.com/prettyware_ceramika" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
                 <i className="fa-brands fa-instagram text-lg"></i>
               </a>
             </div>
+
           </div>
         </div>
       </section>
@@ -193,7 +202,7 @@ function SinglePage() {
               {releted.map((item, index) => (
                 <SwiperSlide key={item.id}>
                   <div key={index} className="flex justify-center items-stretch h-full">
-                    <div className="card w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[20rem]  flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0" onClick={() => handleSinglePageClick(item._id)} >
+                    <div className="card w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-[22rem] lg:max-w-[18rem] xl:max-w-[17rem] flex flex-col items-center hover:shadow-sm transition-transform duration-300 cursor-pointer overflow-auto m-1 z-0" onClick={() => handleSinglePageClick(item._id)} >
                       <div
                         className="h-[350px] relative overflow-hidden w-full group"
 

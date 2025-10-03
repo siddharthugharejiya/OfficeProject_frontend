@@ -8,6 +8,9 @@ import Contect from './Contect'
 import Category from './Category'
 import Who_we_are from './Who_we_are'
 import NewArrivals from './NewArrivals'
+import VisionMission from './VisionMission'
+import { CategorySlider } from './CategorySlider'
+// import CategorySlider from './CategorySlider'
 
 function Main_Routers() {
     return (
@@ -20,6 +23,8 @@ function Main_Routers() {
             <Route path='/whoWeAre' element={<Who_we_are />} />
             <Route path='/new' element={<NewArrivals />} />
             <Route path='/category/:category' element={<Category />} />
+            <Route path='/v' element={<VisionMission />} />
+            <Route path='/c' element={<CategorySlider />} />
         </Routes>
     )
 }

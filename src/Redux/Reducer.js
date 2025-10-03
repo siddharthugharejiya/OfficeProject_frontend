@@ -1,118 +1,142 @@
-
-
-
-const initialstate = {
+// ------------------- PRODUCT GET REDUCER -------------------
+const initialProductState = {
     Product: [],
     loading: false,
     error: null
-}
-export const Product_Get_reducer = (state = initialstate, action) => {
-    switch (action.type) {
-        case "Product_Get_Loading":
-            return { ...state, loading: true, error: null }
-        case "Product_Get":
-            return { ...state, Product: action.payload, loading: false, error: null }
-        case "Product_Get_Error":
-            return { ...state, loading: false, error: action.payload }
-        default:
-            return state
-    }
-}
-
-const edite_initialstate = {
-    edite_data: []
-}
-export const Product_Edite_get_reducer = (state = edite_initialstate, action) => {
-    switch (action.type) {
-        case "Product_Edite_get":
-            return {
-                ...state,
-                edite_data: action.payload
-            }
-        default:
-            return state
-    }
-}
-
-const initialState1 = {
-    Product: [],
-    // singleProduct: null,
-    // loading: false,
-    error: null
 };
 
-export const productReducer_del = (state = initialState1, action) => {
+export const Product_Get_reducer = (state = initialProductState, action) => {
     switch (action.type) {
-        // 🟢 DELETE product
-        case "PRODUCT_DELETE":
-            return {
-                ...state,
-                Product: state.Product.filter(item => item._id !== action.payload),
-                loading: false,
-            };
-
-
-        // 🔴 ERROR
-        case "PRODUCT_ERROR":
-            return {
-                ...state,
-                error: action.payload,
-                loading: false,
-            };
-
-        // 🔄 DEFAULT
+        case "PRODUCT_GET_LOADING":
+            return { ...state, loading: true, error: null };
+        case "PRODUCT_GET_SUCCESS":
+            return { ...state, Product: action.payload, loading: false, error: null };
+        case "PRODUCT_GET_ERROR":
+            return { ...state, loading: false, error: action.payload };
         default:
             return state;
     }
 };
 
-const initialState2 = {
-    Product: null, // ✅ सही
+// ------------------- PRODUCT EDIT GET REDUCER -------------------
+const editeInitialState = {
+    edite_data: [],
     loading: false,
     error: null
 };
 
-
-export const SinglePage_reducer = (state = initialState2, { type, payload }) => {
-    switch (type) {
-        case "Single_Product":
-            return { ...state, Product: payload }
-        default:
-            return state
-    }
-
-}
-
-
-
-const initialState3 = {
-    Product: [], // ✅ सही
-    loading: false,
-    error: null
-};
-
-
-export const Product_Page_reducer = (state = initialState3, { type, payload }) => {
-    switch (type) {
-        case "Product":
-            return { ...state, Product: payload }
-        default:
-            return state
-    }
-
-}
-
-const initialState111 = {
-    category: [],
-};
-
-export const Product_category_reducer = (state = initialState111, action) => {
+export const Product_Edite_get_reducer = (state = editeInitialState, action) => {
     switch (action.type) {
-        case "Product_category":
+        case "PRODUCT_EDIT_GET_LOADING":
+            return { ...state, loading: true, error: null };
+        case "PRODUCT_EDIT_GET_SUCCESS":
+            return { ...state, edite_data: action.payload, loading: false };
+        case "PRODUCT_EDIT_GET_ERROR":
+            return { ...state, loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+// ------------------- PRODUCT DELETE REDUCER -------------------
+const initialDeleteState = {
+    Product: [],
+    loading: false,
+    error: null
+};
+
+export const productReducer_del = (state = initialDeleteState, action) => {
+    switch (action.type) {
+        case "PRODUCT_DELETE_LOADING":
+            return { ...state, loading: true, error: null };
+        case "PRODUCT_DELETE_SUCCESS":
             return {
                 ...state,
-                category: action.payload, // ✅ सिर्फ data ही store करो
+                Product: state.Product.filter(item => item._id !== action.payload),
+                loading: false
             };
+        case "PRODUCT_DELETE_ERROR":
+            return { ...state, loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+// ------------------- SINGLE PAGE REDUCER -------------------
+const initialSinglePageState = {
+    Product: null,
+    loading: false,
+    error: null
+};
+
+export const SinglePage_reducer = (state = initialSinglePageState, action) => {
+    switch (action.type) {
+        case "SINGLE_PRODUCT_LOADING":
+            return { ...state, loading: true, error: null };
+        case "SINGLE_PRODUCT_SUCCESS":
+            return { ...state, Product: action.payload, loading: false };
+        case "SINGLE_PRODUCT_ERROR":
+            return { ...state, loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+// ------------------- PRODUCT PAGE REDUCER -------------------
+const initialProductPageState = {
+    Product: [],
+    loading: false,
+    error: null
+};
+
+export const Product_Page_reducer = (state = initialProductPageState, action) => {
+    switch (action.type) {
+        case "PRODUCT_BY_ID_LOADING":
+            return { ...state, loading: true, error: null };
+        case "PRODUCT_BY_ID_SUCCESS":
+            return { ...state, Product: action.payload, loading: false };
+        case "PRODUCT_BY_ID_ERROR":
+            return { ...state, loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+// ------------------- PRODUCT CATEGORY REDUCER -------------------
+const initialCategoryState = {
+    category: [],
+    loading: false,
+    error: null
+};
+
+export const Product_category_reducer = (state = initialCategoryState, action) => {
+    switch (action.type) {
+        case "CATEGORY_LOADING":
+            return { ...state, loading: true, error: null };
+        case "CATEGORY_SUCCESS":
+            return { ...state, category: action.payload, loading: false };
+        case "CATEGORY_ERROR":
+            return { ...state, loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+// ------------------- FETCH CATEGORY PRODUCTS REDUCER -------------------
+const initialCategoryProductsState = {
+    products: [],
+    loading: false,
+    error: null
+};
+
+export const productCategoryReducer = (state = initialCategoryProductsState, action) => {
+    switch (action.type) {
+        case "CATEGORY_PRODUCTS_LOADING":
+            return { ...state, loading: true, error: null };
+        case "CATEGORY_PRODUCTS_SUCCESS":
+            return { ...state, products: action.payload, loading: false };
+        case "CATEGORY_PRODUCTS_ERROR":
+            return { ...state, loading: false, error: action.payload };
         default:
             return state;
     }

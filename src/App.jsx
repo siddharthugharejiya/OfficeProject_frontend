@@ -34,10 +34,10 @@ function App() {
   return (
     <>
       <GlobalLoader visible={loaderVisible} />
+      <Main_Routers />
       <div className="container-fluid flex justify-center items-center">
 
         <div className="container">
-          <Main_Routers />
         </div>
       </div>
     </>

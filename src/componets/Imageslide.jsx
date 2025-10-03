@@ -9,16 +9,16 @@ const slidess = [
     {
         id: 1,
         image: "https://cdn.shopify.com/s/files/1/0905/2012/files/shopiodecor-slider02.jpg?v=1645586328",
-        subtitle: "online exclusive",
-        title: "simple way to setup your space",
-        description: "Best furniture for your house.",
+        subtitle: "Just a Click Away",
+        title: "Effortless ways to bring strength and style to your space.",
+        description: "Best surfaces for your space",
         buttonText: "View Collection",
     },
     {
         id: 2,
         image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2016&q=80",
-        subtitle: "new arrivals",
-        title: "modern furniture collection",
+        subtitle: "The Latest in Elegance",
+        title: "The Latest in Elegance",
         description: "Transform your living space with our premium collection.",
         buttonText: "Shop Now",
     },
@@ -41,7 +41,7 @@ const AnimatedImageSlider = () => {
                 {slidess.map((slide, index) => (
                     <SwiperSlide key={slide.id}>
                         <div className="relative w-full h-[50vh] xs:h-[60vh] sm:h-[80vh] md:h-[80vh] lg:h-[110vh] xl:h-screen 2xl:h-[100vh] flex items-center justify-center">
-                    
+
                             <div
                                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: `url(${slide.image})` }}
@@ -64,7 +64,7 @@ const AnimatedImageSlider = () => {
                                             <motion.p
                                                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                                                 transition={{ duration: 0.6, ease: "easeOut", type: "tween" }}
-                                                className="text-[#b86c59] text-[11px] xs:text-sm sm:text-base md:text-lg font-semibold uppercase tracking-wider"
+                                                className="text-[#b86c59] pb-2 text-[11px] xs:text-sm sm:text-base md:text-lg font-semibold uppercase tracking-wider"
                                             >
                                                 {slide.subtitle}
                                             </motion.p>
@@ -73,14 +73,14 @@ const AnimatedImageSlider = () => {
                                             <motion.h1
                                                 as="div"
                                                 variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
-                                                className="font-bold text-white uppercase text-[20px] xs:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight"
+                                                className="font-bold pb-2 text-white uppercase text-[20px] xs:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-4xl leading-tight"
                                             >
                                                 {slide.title.split(' ').map((word, wi) => (
                                                     <motion.span
                                                         key={wi + '-' + word}
                                                         variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
                                                         transition={{ duration: 0.6, ease: "easeOut", type: "tween" }}
-                                                        className="inline-block mr-2"
+                                                        className="inline-block pb-2 mr-2"
                                                     >
                                                         {word}
                                                     </motion.span>
@@ -90,7 +90,7 @@ const AnimatedImageSlider = () => {
                                             <motion.p
                                                 variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
                                                 transition={{ duration: 0.6, ease: "easeOut", type: "tween" }}
-                                                className="text-gray-200 text-[12px] xs:text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0"
+                                                className="text-gray-200 text-[12px] xs:text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 pb-2"
                                             >
                                                 {slide.description}
                                             </motion.p>

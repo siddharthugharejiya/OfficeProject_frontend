@@ -113,7 +113,10 @@ function Navbar_1() {
                 </div>
 
                 {/* Left: Phone (desktop only) */}
-                <div className="font-medium text-xl hidden md:block">012-345-6789</div>
+                <a href="tel:9879800170" className="font-medium text-xl hidden md:block text-black hover:underline">
+                    9879800170
+                </a>
+        
 
                 {/* Center: Logo */}
                 <div className="flex justify-center">

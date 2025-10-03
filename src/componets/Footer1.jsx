@@ -21,10 +21,21 @@ function Footer1() {
                         <div data-aos="fade-right">
                             <h1 className='uppercase text-[#000000c2] font-bold mb-4'><img src="../image/Logo CLR.png" className='h-[30px]' alt="" /></h1>
                             <div className='flex items-center gap-3'>
+                                <div className='flex items-center gap-3'>
+                                    <a href="tel:9879800170" className='text-[#BF624C] text-3xl hover:underline'>
+                                        9879800170
+                                    </a>
+                                </div>
 
-                                <span className='text-[#BF624C] text-3xl'>0123-456-789</span>
                             </div>
-                            <p>demo@demo.com</p>
+
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Info@prettywareceramikallp.com
+                            </a>
                         </div>
 
 
@@ -68,48 +79,59 @@ function Footer1() {
 
                         {/* Useful Links */}
                         <div data-aos="fade-left">
-                            <h1 className='uppercase text-[#000] font-bold mb-4'>connect with us</h1>
+                            <h1 className='uppercase text-[#000] font-bold mb-4'>Connect with us</h1>
                             <div className="flex gap-2">
+
                                 {/* Facebook */}
-                                <a href="https://facebook.com/clientname" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/profile.php?id=61578722161740" target="_blank" rel="noopener noreferrer">
                                     <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
-                    transition-colors duration-300 hover:bg-blue-600 hover:text-white"
+        transition-colors duration-300 hover:bg-blue-600 hover:text-white"
                                         style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
                                         <i className="fa-brands fa-facebook-f text-sm"></i>
                                     </div>
                                 </a>
 
-                                {/* Twitter */}
+                                {/* LinkedIn */}
+                                <a href="https://www.linkedin.com/in/prettyware-ceramika-33b973377" target="_blank" rel="noopener noreferrer">
+                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-sky-500 hover:text-white"
+                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                        <i className="fa-brands fa-linkedin-in text-sm"></i>
+                                    </div>
+                                </a>
+
+                                {/* Pinterest */}
+                                <a href="https://pin.it/4GIGzi4YU" target="_blank" rel="noopener noreferrer">
+                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-red-600 hover:text-white"
+                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                        <i className="fa-brands fa-pinterest text-sm"></i>
+                                    </div>
+                                </a>
+
+                                {/* Instagram */}
+                                <a href="https://www.instagram.com/prettyware_ceramika" target="_blank" rel="noopener noreferrer">
+                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
+        transition-colors duration-300 hover:bg-pink-500 hover:text-white"
+                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
+                                        <i className="fa-brands fa-instagram text-sm"></i>
+                                    </div>
+                                </a>
+
+                                {/* Twitter (existing placeholder) */}
                                 <a href="https://twitter.com/clientname" target="_blank" rel="noopener noreferrer">
                                     <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
-                    transition-colors duration-300 hover:bg-sky-400 hover:text-white"
+        transition-colors duration-300 hover:bg-sky-400 hover:text-white"
                                         style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
                                         <i className="fa-brands fa-twitter text-sm"></i>
                                     </div>
                                 </a>
 
-                                {/* YouTube */}
-                                <a href="https://youtube.com/@clientname" target="_blank" rel="noopener noreferrer">
-                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
-                    transition-colors duration-300 hover:bg-red-600 hover:text-white"
-                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
-                                        <i className="fa-brands fa-youtube text-sm"></i>
-                                    </div>
-                                </a>
+                          
 
-                                {/* Instagram */}
-                                <a href="https://instagram.com/clientname" target="_blank" rel="noopener noreferrer">
-                                    <div className="w-[42px] h-[42px] rounded-full border flex justify-center items-center
-                    transition-colors duration-300 hover:bg-pink-500 hover:text-white"
-                                        style={{ borderColor: 'rgba(153, 153, 153, 0.1)' }}>
-                                        <i className="fa-brands fa-instagram text-sm"></i>
-                                    </div>
-                                </a>
                             </div>
-
-
-
                         </div>
+
                     </div>
 
 

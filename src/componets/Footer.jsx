@@ -19,22 +19,34 @@ function Footer() {
                         <h1 className='uppercase text-white font-bold mb-4'>Contact Info</h1>
                         <p className='uppercase mb-1'>Store Location</p>
                         <address className='not-italic leading-6'>
-                            85 Lake View Drive<br />
-                            Marshfield, New York, 54449
+                            Head office
+                            322,third floor, ishan business center, <br /> B/H ishan ceramic zone
+                            Lalpar morbi, 363642
+
                         </address>
                         <p className='uppercase mt-4 mb-1'>Email Us</p>
-                        <p>demo@demo.com</p>
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&to=Info@prettywareceramikallp.com&su=Enquiry&body=Hello, I want to know more about your products."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Info@prettywareceramikallp.com
+                        </a>
+
+
+
                     </div>
 
                     {/* Support */}
                     <div data-aos="fade-up">
                         <h1 className='text-white text-lg font-semibold mb-4'>Need Support?</h1>
-                        <div className='flex items-center gap-3'>
+                        <a href="tel:9879800170" className='flex items-center gap-2'>
                             <div className='bg-[#BD9C85] h-10 w-10 rounded-full flex justify-center items-center'>
                                 <i className="fa-solid fa-phone text-white text-sm"></i>
                             </div>
-                            <span className='text-white text-sm'>0123-456-789</span>
-                        </div>
+                            <span className='text-white text-sm'>9879800170</span>
+                        </a>
+
                     </div>
 
                     {/* Useful Links */}
